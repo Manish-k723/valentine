@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const cuteMessage = document.getElementById("cute-message");
 
   let noClickCount = 0;
-  let currentX = 0;
-  let currentY = 0;
 
   const yesMessages = [
     "Yes! 💕",
@@ -16,16 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "YESSS!!!! 💗",
     "YESSSS!!!!! 😍",
     "YESSSSS!!!!!! 🥺💕",
-  ];
-
-  const cuteMessages = [
-    "I promise to be the best Valentine ever! 🥰",
-    "We could watch movies and eat snacks together! 🍿",
-    "I'll bring you your favorite treats! 🍫",
-    "We'll make the cutest memories together! 📸",
-    "I already picked out a perfect spot for us! 🌟",
-    "You + Me = Perfect Valentine's Day! ✨",
-    "I've been practicing my best compliments for you! 💝",
   ];
 
   const noButtonMessages = [
@@ -81,55 +69,40 @@ document.addEventListener("DOMContentLoaded", function () {
     "Fine, I give up... 😔",
   ];
 
-  let messageIndex = 0;
-
-  // Rotate cute messages
-  setInterval(() => {
-    messageIndex = (messageIndex + 1) % cuteMessages.length;
-    cuteMessage.style.opacity = "0";
-    setTimeout(() => {
-      cuteMessage.textContent = cuteMessages[messageIndex];
-      cuteMessage.style.opacity = "1";
-    }, 300);
-  }, 4000);
-
-  /* -----------------------------
-       FIXED MOVE LOGIC
-    ----------------------------- */
+  /* ---------------------------
+       MOVE FUNCTION (FINAL FIX)
+    --------------------------- */
 
   function moveNoButton() {
     noClickCount++;
 
-    const padding = 20;
+    const card = document.querySelector(".card");
+    const cardRect = card.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
-    const maxX = window.innerWidth - btnRect.width - padding;
-    const maxY = window.innerHeight - btnRect.height - padding;
+    const padding = 20;
 
-    const newX = padding + Math.random() * (maxX - padding);
-    const newY = padding + Math.random() * (maxY - padding);
+    const maxX = cardRect.width - btnRect.width - padding;
+    const maxY = cardRect.height - btnRect.height - padding;
 
-    currentX = newX;
-    currentY = newY;
+    const newX = Math.random() * maxX;
+    const newY = Math.random() * maxY;
 
-    noBtn.style.position = "fixed";
-    noBtn.style.left = "0px";
-    noBtn.style.top = "0px";
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    noBtn.style.position = "absolute";
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+    noBtn.style.transition = "all 0.25s ease";
 
-    // Update text safely
-    const textSpan = noBtn.querySelector(".btn-text");
-    if (textSpan) {
-      textSpan.textContent =
+    const span = noBtn.querySelector(".btn-text");
+    if (span) {
+      span.textContent =
         noButtonMessages[noClickCount % noButtonMessages.length];
     }
 
-    // Grow Yes button slightly
     const growthFactor = Math.min(noClickCount, yesMessages.length - 1);
     yesBtn.querySelector(".btn-text").textContent = yesMessages[growthFactor];
 
-    const scale = 1 + Math.min(noClickCount * 0.02, 1.5);
+    const scale = 1 + Math.min(noClickCount * 0.02, 1.3);
     yesBtn.style.transform = `scale(${scale})`;
   }
 
@@ -140,19 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
     moveNoButton();
   });
 
-  /* -----------------------------
-       YES BUTTON
-    ----------------------------- */
-
   yesBtn.addEventListener("click", function () {
-    yesBtn.style.transform = "scale(0.9)";
-    setTimeout(() => {
-      yesBtn.style.transform = "";
-    }, 100);
-
-    setTimeout(() => {
-      questionContainer.classList.add("hidden");
-      successContainer.classList.remove("hidden");
-    }, 300);
+    questionContainer.classList.add("hidden");
+    successContainer.classList.remove("hidden");
   });
 });
