@@ -1,36 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Question 💕</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
+    <!-- Animated Background Elements -->
     <div class="hearts-container" id="hearts"></div>
-    
+    <div class="sparkles-container" id="sparkles"></div>
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Decorative Elements -->
+    <div class="cupid-arrow left-arrow">
+        <div class="arrow">→</div>
+    </div>
+    <div class="cupid-arrow right-arrow">
+        <div class="arrow">←</div>
+    </div>
+
+    <div class="floating-decoration top-left">🌹</div>
+    <div class="floating-decoration top-right">🌹</div>
+    <div class="floating-decoration bottom-left">💝</div>
+    <div class="floating-decoration bottom-right">💝</div>
+
     <div class="container" id="question-container">
         <div class="card">
-            <div class="emoji">🥺💖</div>
-            <h1>Will you be my Valentine?</h1>
-            <p class="subtitle">Pretty please...</p>
-            <div class="buttons">
-                <button class="btn yes-btn" id="yes-btn">Yes! 💕</button>
-                <button class="btn no-btn" id="no-btn">No 😢</button>
+            <div class="card-decoration">✨</div>
+            <div class="emoji-container">
+                <div class="emoji">🥺</div>
+                <div class="hearts-around">
+                    <span>💕</span>
+                    <span>💖</span>
+                    <span>💗</span>
+                </div>
             </div>
+            <h1>Will you be my Valentine, Prenka?</h1>
+            <p class="subtitle">You make my heart go 💓 skip-a-beat!</p>
+            <p class="cute-message" id="cute-message">I promise to be the best Valentine ever! 🥰</p>
+            <div class="buttons">
+                <button class="btn yes-btn" id="yes-btn">
+                    <span class="btn-text">Yes! 💕</span>
+                    <span class="btn-sparkle">✨</span>
+                </button>
+                <button class="btn no-btn" id="no-btn">
+                    <span class="btn-text">No 😢</span>
+                </button>
+            </div>
+            <div class="hover-hint" id="hover-hint">Psst... the "Yes" button is looking extra cute today! 👀</div>
         </div>
     </div>
 
     <div class="container hidden" id="success-container">
         <div class="card success-card">
-            <div class="emoji">🎉💖🥰💖🎉</div>
-            <h1>Yay!!!</h1>
-            <p class="love-message">I knew you'd say yes!</p>
-            <p class="love-message">You just made me the happiest person ever! 💕</p>
-            <div class="heart-burst" id="heart-burst"></div>
+            <div class="confetti-container" id="confetti"></div>
+            <div class="emoji-celebrate">
+                <span class="bounce-1">🎉</span>
+                <span class="bounce-2">💖</span>
+                <span class="bounce-3">🥰</span>
+                <span class="bounce-4">💖</span>
+                <span class="bounce-5">🎉</span>
+            </div>
+            <h1 class="success-title">Yaaaay!!!</h1>
+            <div class="love-message-box">
+                <p class="love-message">I knew you'd say yes! 🎊</p>
+                <p class="love-message">You just made me the happiest person in the universe! 💫</p>
+                <p class="love-message special">Can't wait to spend Valentine's Day with you! 💕</p>
+            </div>
+            <div class="dancing-hearts">
+                <span>💝</span>
+                <span>💕</span>
+                <span>💖</span>
+                <span>💗</span>
+                <span>💝</span>
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
